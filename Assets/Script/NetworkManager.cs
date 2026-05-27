@@ -30,6 +30,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
         statusText.text = "Connecting to Photon...";
@@ -89,6 +90,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // ✅ Khi đã vào phòng (join hoặc create)
     public override void OnJoinedRoom()
     {
+        PlayerPrefs.SetInt("Coin", 0);
+        PlayerPrefs.Save();
         statusText.text = "Joined room: " + PhotonNetwork.CurrentRoom.Name;
         Debug.Log($"[NetworkManager] Joined room '{PhotonNetwork.CurrentRoom.Name}', MasterClient={PhotonNetwork.IsMasterClient}");
 

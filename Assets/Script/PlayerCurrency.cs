@@ -147,14 +147,20 @@ public class PlayerCurrency : MonoBehaviourPun, IPunObservable
     }
     void LoadData()
     {
-        coin = PlayerPrefs.GetInt("Coin_" + photonView.ViewID, 0); // Per player
-        if (isUnlocked == null) isUnlocked = new bool[unlockables.Length];
-        for (int i = 0; i < isUnlocked.Length; i++)
+        void LoadData()
         {
-            isUnlocked[i] = PlayerPrefs.GetInt($"Unlock_{i}_" + photonView.ViewID, 0) == 1;
-            if (isUnlocked[i] && unlockables[i] != null) unlockables[i].enabled = true;
+            coin = 0;
+
+            if (isUnlocked == null)
+                isUnlocked = new bool[unlockables.Length];
+
+            for (int i = 0; i < isUnlocked.Length; i++)
+            {
+                isUnlocked[i] = false;
+            }
+
+            OnCoinChanged?.Invoke(coin);
         }
-        OnCoinChanged?.Invoke(coin); // Trigger UI ngay
     }
 
     void SaveData()

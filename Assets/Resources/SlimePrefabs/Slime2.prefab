@@ -411,6 +411,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4681938891572346112}
+  - {fileID: 2422072270963080504}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -585,6 +586,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b1abacd52ab6f4884699cefd24b954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnCoinChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnlockChanged:
+    m_PersistentCalls:
+      m_Calls: []
   coin: 0
   unlockCosts: 01000000020000000100000001000000
   unlockables:
