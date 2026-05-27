@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 884c34f4625e94a42813a58aafd3bec9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307739
+  packageName: UI Animation
+  packageVersion: 1.1
+  assetPath: Assets/UIAnimation/Data/Animations/Panels/Translate + Rotate + Scale/Panel_1/New
+    Scale Animation PANEL_1.asset
+  uploadId: 741200
