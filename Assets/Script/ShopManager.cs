@@ -17,8 +17,8 @@ public class ShopManager : MonoBehaviour
         }
 
         // Thiết lập ban đầu: Khóa và ẩn con trỏ chuột
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     void Update()
