@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: -421730060217173627}
   - component: {fileID: -106393843457877388}
   - component: {fileID: 6090346872976716340}
-  - component: {fileID: -2530863146991733855}
   m_Layer: 6
   m_Name: Trash1
   m_TagString: Trash
@@ -293,19 +292,6 @@ MonoBehaviour:
   m_SynchronizeScale: 0
   m_UseLocal: 1
 --- !u!114 &6090346872976716340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6764309513913384639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671969f0141cf3b4eb3514a8f179b6b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerActorNr: -1
---- !u!114 &-2530863146991733855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

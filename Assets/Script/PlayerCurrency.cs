@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using Photon.Pun;
 using UnityEngine.Events;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerCurrency : MonoBehaviourPun
+public class PlayerCurrency : MonoBehaviourPun, IPunObservable
 {
-    public UnityEvent<int> OnCoinChanged; // Event cho UI
-    public UnityEvent<int> OnUnlockChanged; // Event khi unlock thay đổi
+    public UnityEvent<int> OnCoinChanged = new UnityEvent<int>();
+    public UnityEvent<int> OnUnlockChanged = new UnityEvent<int>(); // Event khi unlock thay đổi
     [Header("Tiền tệ")]
     public int coin = 0;
     [Header("Unlock cấu hình (3 skills/items)")]
@@ -117,14 +119,17 @@ public class PlayerCurrency : MonoBehaviourPun
     // COIN
     // ============================================
     [PunRPC]
-    public void AddCoin(int amount, PhotonMessageInfo info)
+    public void AddCoinRPC(int amount)
     {
-        // BẢO MẬT TUYỆT ĐỐI: Chỉ chủ nhân vật mới được phép cộng coin
-        if (!photonView.IsMine) return;
         coin += amount;
-        string playerName = photonView.Owner?.NickName ?? "Player";
-        Debug.Log($"[COIN] {playerName} +{amount} coin → Tổng: {coin}");
-        SaveData(); OnCoinChanged?.Invoke(coin);
+
+        Debug.Log(
+            $"[COIN] {photonView.Owner.NickName} +{amount} => {coin}"
+        );
+
+        SaveData();
+
+        OnCoinChanged?.Invoke(coin);
     }
     // THÊM VÀO PlayerCurrency.cs (thêm vào cuối class, trước LoadData/SaveData)
 
@@ -158,5 +163,21 @@ public class PlayerCurrency : MonoBehaviourPun
         for (int i = 0; i < isUnlocked.Length; i++)
             PlayerPrefs.SetInt($"Unlock_{i}_" + photonView.ViewID, isUnlocked[i] ? 1 : 0);
         PlayerPrefs.Save();
+    }
+
+    public void OnPhotonSerializeView(
+    PhotonStream stream,
+    PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(coin);
+        }
+        else
+        {
+            coin = (int)stream.ReceiveNext();
+
+            OnCoinChanged?.Invoke(coin);
+        }
     }
 }

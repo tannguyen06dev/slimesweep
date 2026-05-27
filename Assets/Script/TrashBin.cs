@@ -24,7 +24,11 @@ public class TrashBin : MonoBehaviourPun
                 if (targetCurrency != null)
                 {
                     // Gọi RPC AddCoin trên PlayerCurrency của owner
-                    targetCurrency.photonView.RPC("AddCoin", RpcTarget.AllBuffered, coinPerTrash);
+                    targetCurrency.photonView.RPC(
+    "AddCoinRPC",
+    RpcTarget.AllBuffered,
+    coinPerTrash
+);
                     Debug.Log($"Bỏ rác thành công cho player {trashObj.ownerActorNr}! +{coinPerTrash} coin");
                 }
                 else

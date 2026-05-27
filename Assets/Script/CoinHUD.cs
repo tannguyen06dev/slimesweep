@@ -88,7 +88,10 @@ public class CoinHUD : MonoBehaviour
 
     void UpdateCoin(int amount)
     {
-        coinText.text = $"{amount} $";
-        Debug.Log($"HUD update: {amount} coin");
+        Debug.Log(
+            $"HUD Update => {amount}"
+        );
+
+        coinText.text = amount + " $";
     }
 }
